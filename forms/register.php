@@ -1,5 +1,3 @@
-
-
 <div class="row padding10">
     <form class="col s12" autocomplete="nope">
         <div class="row">
@@ -30,5 +28,6 @@
                 <label for="password">Confirm Password</label>
             </div>
         </div>
+        <button class="btn waves-effect waves-light" type="submit" name="register">Register</button>
     </form>
 </div>

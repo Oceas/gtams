@@ -20,10 +20,8 @@
 <!--Navigation -->
 <?php require_once "navbar.php"; ?>
 
-<!--Signup -->
-<?php require_once "forms/signup.php"; ?>
-
-
+<!--register -->
+<?php require_once "forms/register.php"; ?>
 
 
 
