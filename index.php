@@ -1,5 +1,9 @@
 <?php
+    $page_title = "GTASS";
+    require "header.php";
+?>
 
-    $page_title = "Test Title";
-    include "template.php";
+
+<?php
+    require "footer.php";
 ?>
