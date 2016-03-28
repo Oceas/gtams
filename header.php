@@ -10,3 +10,6 @@
 
 <!--Navbar -->
 <?php require_once "navbar.php" ?>
+
+<!--ActionBar -->
+<?php require_once "actionbar.php" ?>

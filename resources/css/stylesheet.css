@@ -1,11 +1,11 @@
 body {
-    padding: 75px;
+    padding: 125px;
 }
 
 /*
-    Navigation Bar CSS
+    Menu and Action Bar CSS
 */
-.nav-bar {
+.nav-bar{
     position: fixed;
     top: 0;
     left: 0;
@@ -13,14 +13,13 @@ body {
     width: 100%;
     height: 50px;
     background: #2A333B;
-    margin-bottom: 50px;
 }
 
-.nav-bar ul {
+.menu-bar {
     overflow: hidden;
 }
 
-.nav-bar ul li {
+.menu-bar ul li {
     font-family: 'Montserrat', sans-serif;
     display: block;
     float: left;
@@ -29,17 +28,24 @@ body {
     padding: 0px 10px 0px 10px;
 }
 
-.nav-bar ul li a {
+.menu-bar ul li a {
     text-decoration: none;
     color: #3ab795;
 }
 
-.nav-bar ul li a:hover {
+.menu-bar ul li a:hover {
     color: #c1da5a;
     cursor: pointer;
+    display: inline;
+    padding-bottom: 8px;
+    border-bottom: solid 3px #c1da5a;
 }
 
-.nav-container-right {
+.container-center{
+    float: left;
+}
+
+.container-right {
     float: right;
 }
 
@@ -63,8 +69,8 @@ form {
     border: 1px solid teal;
 }
 
-form input{
-    border-bottom: 1px solid  #4CAF50 !important;
+form input {
+    border-bottom: 1px solid #4CAF50 !important;
     outline: none;
     background-color: transparent;
     border: 0px solid;
@@ -73,6 +79,48 @@ form input{
     color: #CCC;
     margin: 5px;
 }
+
+/*
+    Action Bar CSS
+*/
+
+.action-bar {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 50px;
+    background-color: #3ab795;
+}
+
+.action-bar ul li {
+    font-family: 'Montserrat', sans-serif;
+    display: block;
+    float: left;
+    font-size: 14px;
+    padding: 0px 10px 0px 10px;
+}
+
+.action-bar ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.action-bar ul li a:hover {
+    -webkit-animation-name: action-bar-hover; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 1s; /* Chrome, Safari, Opera */
+    color: black;
+    cursor: pointer;
+    display: inline;
+    padding-bottom: 13px;
+
+}
+@-webkit-keyframes action-bar-hover {
+    from {color: #ffffff; border-bottom:  0px #fff;}
+    to {color: black; border-bottom: solid 3px black;}
+}
+
 
 /*
     Buttons CSS
