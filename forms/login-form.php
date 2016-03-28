@@ -1,5 +1,6 @@
 <div class="row padding10">
-    <form class="col s12" autocomplete="nope">
+    <?php echo dirname(__FILE__); ?>
+<form class="col s12" autocomplete="nope">
         <div class="row">
             <div class="input-field col s12">
                 <input id="email" type="email" class="validate">
