@@ -1,5 +1,5 @@
 <?php
-    $page_title = "GTASS";
+    $page_title = "GTAMS";
     require "header.php";
 ?>
 

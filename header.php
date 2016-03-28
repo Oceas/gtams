@@ -3,6 +3,7 @@
 <head>
     <title><?php echo $page_title; ?></title>
     <link type="text/css" rel="stylesheet" href="resources/css/stylesheet.css" media="screen,projection"/>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
