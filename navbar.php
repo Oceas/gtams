@@ -4,7 +4,7 @@
     <div class="nav-container-right">
         <ul>
             <li>Register</li>
-            <li>Login</li>
+            <li><a href="forms/login-form.php">Login</a></li>
             <li>Logout</li>
             <li>Dashboard</li>
         </ul>

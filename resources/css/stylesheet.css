@@ -1,45 +1,90 @@
+body {
+    padding: 75px;
+}
 
 /*
     Navigation Bar CSS
 */
-.nav-bar{
+.nav-bar {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 999;
     width: 100%;
     height: 50px;
-    background: teal;
+    background: #2A333B;
+    margin-bottom: 50px;
 }
 
-.nav-bar ul{
-    overflow:hidden;
+.nav-bar ul {
+    overflow: hidden;
 }
 
-.nav-bar ul li{
+.nav-bar ul li {
     font-family: 'Montserrat', sans-serif;
-    display:block;
-    float:left;
+    display: block;
+    float: left;
     font-size: 20px;
+    color: #3ab795;
     padding: 0px 10px 0px 10px;
 }
 
-.nav-bar ul li:hover {
-    opacity: 0.6;
-    cursor:pointer;
+.nav-bar ul li a {
+    text-decoration: none;
+    color: #3ab795;
 }
 
-.nav-container-right{
-    float:right;
+.nav-bar ul li a:hover {
+    color: #c1da5a;
+    cursor: pointer;
 }
 
-.nav-application-name{
+.nav-container-right {
+    float: right;
+}
+
+.nav-application-name {
     font-family: 'Montserrat', sans-serif;
-    display:block;
-    float:left;
+    display: block;
+    float: left;
     font-size: 20px;
     padding: 0px 10px 0px 10px;
-    float:left;
-    color:white;
-    text-decoration:underline;
+    float: left;
+    color: white;
+    text-decoration: underline;
+}
+
+/*
+    Forms CSS
+*/
+
+form {
+    padding: 50px;
+    border: 1px solid teal;
+}
+
+form input{
+    border-bottom: 1px solid  #4CAF50 !important;
+    outline: none;
+    background-color: transparent;
+    border: 0px solid;
+    height: 20px;
+    width: 160px;
+    color: #CCC;
+    margin: 5px;
+}
+
+/*
+    Buttons CSS
+*/
+
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
