@@ -1,33 +1,27 @@
-<div class="row padding10">
-    <form class="col s12" autocomplete="nope">
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="first_name" type="text" class="validate">
-                <label for="first_name">First Name</label>
-            </div>
-            <div class="input-field col s6">
-                <input id="last_name" type="text" class="validate" autocomplete="off">
-                <label for="last_name">Last Name</label>
-            </div>
+<form>
+    <div class="row">
+        <div class="six columns">
+            <label for="exampleEmailInput">Your email</label>
+            <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
         </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="email" type="email" class="validate">
-                <label for="email">Email</label>
-            </div>
+        <div class="six columns">
+            <label for="exampleRecipientInput">Major</label>
+            <select class="u-full-width" id="exampleRecipientInput">
+                <option value="Option 1">Questions</option>
+                <option value="Option 2">Admiration</option>
+                <option value="Option 3">Can I get your number?</option>
+            </select>
         </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="password" type="password" class="validate">
-                <label for="password">Password</label>
-            </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            <label for="password">New Password</label>
+            <input class="u-full-width" type="password" id="password" name="password">
         </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="password" type="password" class="validate">
-                <label for="password">Confirm Password</label>
-            </div>
+        <div class="six columns">
+            <label for="confirmPassword">Confirm Password</label>
+            <input class="u-full-width" type="password" id="confirmPassword" name="confirmPassword">
         </div>
-        <button class="btn waves-effect waves-light" type="submit" name="register">Register</button>
-    </form>
-</div>
+    </div>
+    <input class="button-primary" type="submit" value="Submit">
+</form>

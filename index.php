@@ -4,7 +4,7 @@
 ?>
 
 <?php
-    require"forms/login-form.php";
+    require"forms/register-form.php";
 ?>
 
 

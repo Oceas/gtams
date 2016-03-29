@@ -81,16 +81,7 @@ form {
     border: 1px solid teal;
 }
 
-form input {
-    border-bottom: 1px solid #4CAF50 !important;
-    outline: none;
-    background-color: transparent;
-    border: 0px solid;
-    height: 20px;
-    width: 160px;
-    color: #CCC;
-    margin: 5px;
-}
+
 
 /*
     Action Bar CSS
