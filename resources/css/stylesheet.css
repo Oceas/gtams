@@ -5,18 +5,19 @@ body {
 /*
     Menu and Action Bar CSS
 */
-.nav-bar{
+.nav-bar {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 999;
     width: 100%;
-    height: 50px;
+    height: 30px;
     background: #2A333B;
 }
 
 .menu-bar {
     overflow: hidden;
+    padding: 10px;
 }
 
 .menu-bar ul li {
@@ -33,20 +34,13 @@ body {
     color: #3ab795;
 }
 
-.menu-bar ul li a:hover {
-    color: #c1da5a;
-    cursor: pointer;
-    display: inline;
-    padding-bottom: 8px;
-    border-bottom: solid 3px #c1da5a;
-}
-
-.container-center{
+.container-center {
     float: left;
 }
 
 .container-right {
     float: right;
+    margin-right: 10px;
 }
 
 .nav-application-name {
@@ -54,10 +48,28 @@ body {
     display: block;
     float: left;
     font-size: 20px;
-    padding: 0px 10px 0px 10px;
+    padding: 0px 0px 0px 20px;
     float: left;
-    color: white;
-    text-decoration: underline;
+    color: #3ab795;
+}
+
+.menu-bar ul li a:hover {
+    color: #c1da5a;
+    cursor: pointer;
+    display: inline;
+    padding-bottom: 10px;
+    border-bottom: solid 3px #c1da5a;
+    -webkit-animation-name: nav-bar-hover; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 1s; /* Chrome, Safari, Opera */
+}
+
+@-webkit-keyframes nav-bar-hover {
+    from {
+        border-bottom: 0px #fff;
+    }
+    to {
+        border-bottom: solid 3px c1da5a;
+    }
 }
 
 /*
@@ -90,7 +102,7 @@ form input {
     left: 0;
     z-index: 999;
     width: 100%;
-    height: 50px;
+    height: 30px;
     background-color: #3ab795;
 }
 
@@ -113,14 +125,20 @@ form input {
     color: black;
     cursor: pointer;
     display: inline;
-    padding-bottom: 13px;
+    padding-bottom: 18px;
 
 }
+
 @-webkit-keyframes action-bar-hover {
-    from {color: #ffffff; border-bottom:  0px #fff;}
-    to {color: black; border-bottom: solid 3px black;}
+    from {
+        color: #ffffff;
+        border-bottom: 0px #fff;
+    }
+    to {
+        color: black;
+        border-bottom: solid 3px black;
+    }
 }
-
 
 /*
     Buttons CSS
@@ -136,3 +154,7 @@ button {
     display: inline-block;
     font-size: 16px;
 }
+
+/**
+    Forms fields
+**/

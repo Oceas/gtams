@@ -3,7 +3,9 @@
 <head>
     <title><?php echo $page_title; ?></title>
     <link type="text/css" rel="stylesheet" href="resources/css/stylesheet.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="resources/css/structure-merge.css"/>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
 </head>
 
 <body>
