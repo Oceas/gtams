@@ -3,6 +3,15 @@ body {
 }
 
 /*
+    Quick Tags
+
+*/
+
+.text-center{
+    text-align: center;
+}
+
+/*
     Menu and Action Bar CSS
 */
 .nav-bar {
@@ -80,8 +89,6 @@ form {
     padding: 50px;
     border: 1px solid teal;
 }
-
-
 
 /*
     Action Bar CSS
