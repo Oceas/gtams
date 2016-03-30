@@ -66,9 +66,91 @@
     </div>
     <div class="row">
         <div class="six columns">
-            <label for="semestersGTA">Number of semesters (including summers) working as a graduate teaching assistant</label>
+            <label for="semestersGTA">Number of semesters (including summers) working as a graduate teaching
+                assistant</label>
             <input class="u-full-width" type="text" placeholder="0" id="semestersGTA">
         </div>
     </div>
+    <div class="row">
+        <div class="row">
+            <div class="eight columns">
+                <label>Graduate Courses Completed</label>
+            </div>
+            <div class="three columns">
+                <label>Grade Earned</label>
+            </div>
+        </div>
+        <div class="dynamic-list">
+            <div class="eight columns">
+                <input class="u-full-width" placeholder="COP XXXX" type="text" name="graduateCourse[course][]">
+            </div>
+            <div class="three columns">
+                <input class="u-full-width" placeholder="B" type="text" name="graduateCourse[grade][]">
+            </div>
+            <div class=" one columns">
+                <input class="button-primary" type="submit" value="+">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row">
+            <div class="six columns">
+                <label>Publications</label>
+            </div>
+            <div class="five columns">
+                <label>Publication Citation Information</label>
+            </div>
+        </div>
+        <div class="dynamic-list">
+            <div class="six columns">
+                <input class="u-full-width" placeholder="Changes in XXXXXX for XXXXXX" type="text"
+                       name="publications[publication][]">
+            </div>
+            <div class="five columns">
+                <input class="u-full-width" placeholder="ACM: 2016 XXXX" type="text" name="publications[citation][]">
+            </div>
+            <div class="one columns">
+                <input class="button-primary" type="submit" value="+">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="seven columns">
+            <label for="currentAdvisorName">Name of current Ph.D. advisor at UCF</label>
+            <input class="u-full-width" type="text" placeholder="Dr. John Doe" id="currentAdvisor">
+        </div>
+        <div class="five columns">
+            <label for="currentAdvisorEmail">Current Ph.D. advisor's email</label>
+            <input class="u-full-width" type="email" placeholder="example@ucf.edu" id="currentAdvisorEmail">
+        </div>
+    </div>
+    <div class="row">
+        <div class="row">
+            <div class="five columns">
+                <label>Name of previous Ph.D. advisors at UCF</label>
+            </div>
+            <div class="three columns">
+                <label>From</label>
+            </div>
+            <div class="three columns">
+                <label>Till</label>
+            </div>
+        </div>
+        <div class="dynamic-list">
+            <div class="five columns">
+                <input class="u-full-width" placeholder="Dr. Jane Doe" type="text" name="previousAdivsors[advisor][]">
+            </div>
+            <div class="three columns">
+                <input class="u-full-width" type="date" name="previousAdivsors[from][]">
+            </div>
+            <div class="three columns">
+                <input class="u-full-width" type="date" name="previousAdivsors[till][]">
+            </div>
+            <div class="one columns">
+                <input class="button-primary" type="submit" value="+">
+            </div>
+        </div>
+    </div>
+
     <input class="button-primary" type="submit" value="Submit">
 </form>
