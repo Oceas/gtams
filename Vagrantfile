@@ -24,7 +24,10 @@ $script = <<SCRIPT
   debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again password root'
 
   apt-get update
-  apt-get -y install mysql-server-5.5 php5-mysql libsqlite3-dev apache2 php5 php5-dev build-essential php-pear ruby2.2.1-dev
+  apt-get -y install mysql-server-5.5 php5-mysql libsqlite3-dev apache2 php5 php5-dev build-essential php-pear ruby2.3 ruby2.3-dev
+
+  update-alternatives --set ruby /usr/bin/ruby2.3 >/dev/null 2>&1
+  update-alternatives --set gem /usr/bin/gem2.3 >/dev/null 2>&1
 
   echo "America/New_York" | tee /etc/timezone
   dpkg-reconfigure --frontend noninteractive tzdata
