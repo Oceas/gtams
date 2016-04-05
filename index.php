@@ -4,7 +4,7 @@
 ?>
 
 <?php
-    require"forms/advisor-form.php";
+    require"dashboard.php";
 ?>
 
 
