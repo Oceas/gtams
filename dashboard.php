@@ -1,7 +1,3 @@
-<script>
-
-</script>
-
 <div class="row">
     <div class="twelve columns text-center">
         <h3>Graduate Coordinator Dashboard</h3>
@@ -21,7 +17,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
+    <tr id="1">
         <td>Dr. Mark Heinrich</td>
         <td>Scott Anderson</td>
         <td>89</td>
@@ -64,7 +60,7 @@
     </tbody>
 </table>
 
-<div class="dialog-shadow hidden">
+<div id="userDialog" class="dialog hidden">
     <div class="dialog-body">
         <div class="dialog-header">
             <div class="row">
@@ -72,7 +68,7 @@
                     Scott Anderson's Record
                 </div>
                 <div class="six columns">
-                    <span class="close">×</span>
+                    <span id="closeUserDialog" class="close">×</span>
                 </div>
             </div>
         </div><!--   End of Dialog Header     -->
@@ -92,3 +88,19 @@
     </div>
     </div>
 </div>
+
+<script>
+    var dialog = document.getElementById("userDialog");
+    var record = document.getElementById("1");
+    var closeBtn = document.getElementById("closeUserDialog");
+
+    record.onclick = function(){
+        console.log("Show User Dialog");
+        dialog.classList.remove("hidden");
+    }
+
+    closeBtn.onclick = function(){
+        console.log("Hide User Dialog");
+        dialog.classList.add("hidden");
+    }
+</script>
