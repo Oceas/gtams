@@ -160,3 +160,9 @@ button {
 table thead tr th  , table tr td{
     text-align: center;
 }
+
+.verticaldivide {
+    border-left:1px solid #38546d;
+    width:1px;
+    height:350px;
+}
