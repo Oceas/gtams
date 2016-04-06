@@ -26,16 +26,6 @@
     </div>
     <div class="row">
         <div class="six columns">
-            <label for="password">Password</label>
-            <input class="u-full-width" type="password" id="password">
-        </div>
-        <div class="six columns">
-            <label for="confirmPassword">Confirm Password</label>
-            <input class="u-full-width" type="password" id="confirmPassword">
-        </div>
-    </div>
-    <div class="row">
-        <div class="six columns">
             <label for="phoneNumber">Phone Number</label>
             <input class="u-full-width" type="tel" placeholder="123-456-7890" id="phoneNumber">
         </div>

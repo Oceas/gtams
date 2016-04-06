@@ -4,7 +4,7 @@
 ?>
 
 <?php
-    require"admin-dashboard.php";
+    require"forms/register-form.php";
 ?>
 
 
