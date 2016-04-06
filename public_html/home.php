@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <div class="row">
     <div class="col s12">
         <div class="center card-panel teal">

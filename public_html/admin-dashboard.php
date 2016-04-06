@@ -1,3 +1,8 @@
+<?php
+  $page_title = "Logout";
+  require "header.php";
+?>
+
 <form>
     <div class="row">
         <div class="twelve columns text-center">
@@ -69,3 +74,7 @@
         </div>
         <input class="button-primary" type="submit" value="Submit">
 </form>
+
+<?php
+  require "footer.php";
+?>

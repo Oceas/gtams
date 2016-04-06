@@ -1,3 +1,8 @@
+<?php
+$page_title = "Register";
+require "header.php";
+?>
+
 <div class="row">
     <div class="twelve columns text-center">
         <h3>Graduate Coordinator Dashboard</h3>
@@ -104,3 +109,7 @@
         dialog.classList.add("hidden");
     }
 </script>
+
+<?php
+require "footer.php";
+?>
