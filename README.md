@@ -6,6 +6,10 @@ $ vagrant up  # boots headless VM (first boot boostraps VM)
 $ vagrant ssh # ssh into VM if needed
 ```
 
+### DB Diagram:
+
+![diagram](/docs/gtams_diagram.png)
+
 ### Project specs:
 
 ### Models
