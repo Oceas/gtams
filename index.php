@@ -4,7 +4,7 @@
 ?>
 
 <?php
-    require"dashboard.php";
+    require"admin-dashboard.php";
 ?>
 
 
