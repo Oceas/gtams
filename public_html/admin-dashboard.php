@@ -9,6 +9,12 @@
             <h3>Create New Application Session</h3>
         </div>
         <div class="row">
+            <div class="twelve columns">
+                <label>Name of Application Session</label>
+                <input class="u-full-width" type="text" name="sessionName"/>
+            </div>
+        </div>
+        <div class="row">
             <div class="six columns">
                 <label>Application Submission Deadline</label>
                 <input class="u-full-width" type="date" name="submissionDeadlineDate">
