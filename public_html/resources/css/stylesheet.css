@@ -90,6 +90,12 @@ form {
     border: 1px solid teal;
 }
 
+.add-button{
+    color: #fff;
+    background-color:#33C3F0;
+}
+
+
 /*
     Action Bar CSS
 */

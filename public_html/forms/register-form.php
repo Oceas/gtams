@@ -1,3 +1,5 @@
+
+
 <form>
     <div class="row">
         <div class="twelve columns text-center">
@@ -66,41 +68,47 @@
             <div class="eight columns">
                 <label>Graduate Courses Completed</label>
             </div>
-            <div class="three columns">
+            <div class="four columns">
                 <label>Grade Earned</label>
             </div>
         </div>
-        <div class="dynamic-list">
-            <div class="eight columns">
-                <input class="u-full-width" placeholder="COP XXXX" type="text" name="graduateCourse[course][]">
+        <div class="row">
+            <div class="row" id="dynamic-course">
+                <div class="eight columns">
+                    <input class="u-full-width" placeholder="COP XXXX" type="text" name="graduateCourse[course][]">
+                </div>
+                <div class="four columns">
+                    <input class="u-full-width" placeholder="B" type="text" name="graduateCourse[grade][]">
+                </div>
             </div>
+        </div>
+        <div class="row">
             <div class="three columns">
-                <input class="u-full-width" placeholder="B" type="text" name="graduateCourse[grade][]">
-            </div>
-            <div class=" one columns">
-                <input class="button-primary" type="submit" value="+">
+                <input class="u-full-width button-primary" type="button" onclick="addCourse('dynamic-course');" value="Add Another Course">
             </div>
         </div>
     </div>
     <div class="row">
         <div class="row">
-            <div class="six columns">
+            <div class="eight columns">
                 <label>Publications</label>
             </div>
-            <div class="five columns">
+            <div class="four columns">
                 <label>Publication Citation Information</label>
             </div>
         </div>
-        <div class="dynamic-list">
-            <div class="six columns">
+        <div class="dynamic-list" id="dynamic-publication">
+            <div class="eight columns">
                 <input class="u-full-width" placeholder="Changes in XXXXXX for XXXXXX" type="text"
                        name="publications[publication][]">
             </div>
-            <div class="five columns">
+            <div class="four columns">
                 <input class="u-full-width" placeholder="ACM: 2016 XXXX" type="text" name="publications[citation][]">
             </div>
-            <div class="one columns">
-                <input class="button-primary" type="submit" value="+">
+        </div>
+        <div class="row">
+            <div class="three columns">
+                <input class="u-full-width button-primary" type="button" onclick="addPublication('dynamic-publication');" value="Add Another Publication">
             </div>
         </div>
     </div>
@@ -116,7 +124,7 @@
     </div>
     <div class="row">
         <div class="row">
-            <div class="five columns">
+            <div class="six columns">
                 <label>Name of previous Ph.D. advisors at UCF</label>
             </div>
             <div class="three columns">
@@ -126,21 +134,61 @@
                 <label>Till</label>
             </div>
         </div>
-        <div class="dynamic-list">
-            <div class="five columns">
-                <input class="u-full-width" placeholder="Dr. Jane Doe" type="text" name="previousAdivsors[advisor][]">
+        <div class="row">
+            <div id="dynamic-advisor">
+                <div class="six columns">
+                    <input class="u-full-width" placeholder="Dr. Jane Doe" type="text"
+                           name="previousAdivsors[advisor][]">
+                </div>
+                <div class="three columns">
+                    <input class="u-full-width" type="date" name="previousAdivsors[from][]">
+                </div>
+                <div class="three columns">
+                    <input class="u-full-width" type="date" name="previousAdivsors[till][]">
+                </div>
             </div>
+        </div>
+        <div class="row">
             <div class="three columns">
-                <input class="u-full-width" type="date" name="previousAdivsors[from][]">
-            </div>
-            <div class="three columns">
-                <input class="u-full-width" type="date" name="previousAdivsors[till][]">
-            </div>
-            <div class="one columns">
-                <input class="button-primary" type="submit" value="+">
+                <input class="u-full-width button-primary" type="button" onclick="addAdvisor('dynamic-advisor');" value="Add Another Advisor">
             </div>
         </div>
     </div>
-
+    <hr/>
     <input class="button-primary" type="submit" value="Submit">
 </form>
+
+<script>
+
+    function addCourse(divName) {
+        console.log("Clicked");
+
+        var newdiv = document.createElement('div');
+        newdiv.classList.add("row");
+        newdiv.innerHTML = "<div class='eight columns'>" + "<input class='u-full-width' placeholder='COP XXXX' type='text' name='graduateCourse[course][]'>" + "</div>"
+            + "<div class='four columns'>" + "<input class='u-full-width' placeholder='B' type='text' name='graduateCourse[grade][]'>" + "</div>";
+        document.getElementById(divName).appendChild(newdiv);
+    }
+
+    function addPublication(divName) {
+        console.log("Clicked");
+
+        var newdiv = document.createElement('div');
+        newdiv.classList.add("row");
+        newdiv.innerHTML = "<div class='eight columns'>" + "<input class='u-full-width' placeholder='Changes in XXXXXX for XXXXXX' type='text' name='publications[publication][]'>" + "</div>"
+            + "<div class='four columns'>" + "<input class='u-full-width' placeholder='ACM: 2016 XXXX' type='text' name='publications[citation][]'>" + "</div>";
+        document.getElementById(divName).appendChild(newdiv);
+    }
+
+    function addAdvisor(divName) {
+        console.log("Clicked");
+
+        var newdiv = document.createElement('div');
+        newdiv.classList.add("row");
+        newdiv.innerHTML = "<div class='six columns'>" + "<input class='u-full-width' placeholder='Dr. Jane Doe' type='text' name='previousAdivsors[advisor][]'>" + "</div>"
+            + "<div class='three columns'>" + "<input class='u-full-width' type='date' name='previousAdivsors[from][]'>" + "</div>"
+            + "<div class='three columns'>" + "<input class='u-full-width' type='date' name='previousAdivsors[till][]'>" + "</div>";
+        document.getElementById(divName).appendChild(newdiv);
+    }
+
+</script>
