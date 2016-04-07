@@ -11,11 +11,11 @@
         <div class="row">
             <div class="six columns">
                 <label>Application Submission Deadline</label>
-                <input class="u-full-width" type="date" id="submissionDeadlineDate">
+                <input class="u-full-width" type="date" name="submissionDeadlineDate">
             </div>
             <div class="six columns">
                 <label>Academic Advisor Letter Deadline</label>
-                <input class="u-full-width" type="date" id="letterDeadlineDate">
+                <input class="u-full-width" type="date" name="letterDeadlineDate">
             </div>
         </div>
         <div class="row">
@@ -52,11 +52,11 @@
                 <div class="three columns">
                     <label>Email</label>
                 </div>
-                <div class="two columns">
+                <div class="three columns">
                     <label>Password</label>
                 </div>
             </div>
-            <div class="dynamic-list">
+            <div id="dynamic-gcmembers" class="row">
                 <div class="six columns">
                     <input class="u-full-width" placeholder="Dr. Jane Doe" type="text"
                            name="gcMembers[name][]">
@@ -64,16 +64,33 @@
                 <div class="three columns">
                     <input class="u-full-width" type="email" name="gcMembers[email][]">
                 </div>
-                <div class="two columns">
+                <div class="three columns">
                     <input class="u-full-width" type="password" name="gcMembers[password][]">
                 </div>
-                <div class="one columns">
-                    <input class="button-primary" type="submit" value="+">
+            </div>
+            <div class="row">
+                <div class="three columns">
+                    <input class="u-full-width button-primary" type="button" onclick="addGCMember('dynamic-gcmembers');" value="Add Another GC Member">
                 </div>
             </div>
         </div>
         <input class="button-primary" type="submit" value="Submit">
 </form>
+
+<script>
+
+    function addGCMember(divName) {
+        console.log("Clicked");
+
+        var newdiv = document.createElement('div');
+        newdiv.classList.add("row");
+        newdiv.innerHTML = "<div class='six columns'>" + "<input class='u-full-width' placeholder='Dr. Jane Doe' type='text' name='gcMembers[name][]'>" + "</div>"
+            + "<div class='three columns'>" + "<input class='u-full-width' type='email' name='gcMembers[email][]'>" + "</div>"
+            + "<div class='three columns'>" + "<input class='u-full-width' type='password' name='gcMembers[password][]'>" + "</div>";
+        document.getElementById(divName).appendChild(newdiv);
+    }
+
+</script>
 
 <?php
   require "footer.php";
