@@ -1,9 +1,16 @@
-
-
 <form>
     <div class="row">
         <div class="twelve columns text-center">
             <h3>GTA Registration Form</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="six columns">
+            <label>Session Apply For</label>
+            <select class="u-full-width" name="session">
+                <option value="sessionID">FALL 2016</option>
+                <option value="sessionID">SPRING 2017</option>
+            </select>
         </div>
     </div>
     <div class="row">
