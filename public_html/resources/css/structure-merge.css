@@ -501,7 +501,6 @@ input[type="button"] {
     text-decoration: none;
     white-space: nowrap;
     background-color: transparent;
-    border-radius: 4px;
     border: 1px solid #bbb;
     cursor: pointer;
     box-sizing: border-box;
@@ -562,7 +561,6 @@ select {
     padding: 6px 10px;
     background-color: #fff;
     border: 1px solid #D1D1D1;
-    border-radius: 4px;
     box-shadow: none;
     box-sizing: border-box;
 }
@@ -658,7 +656,6 @@ code {
     white-space: nowrap;
     background: #F1F1F1;
     border: 1px solid #E1E1E1;
-    border-radius: 4px;
 }
 
 pre > code {
