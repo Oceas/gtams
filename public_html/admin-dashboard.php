@@ -68,7 +68,7 @@
                            name="gcMembers[name][]">
                 </div>
                 <div class="three columns">
-                    <input class="u-full-width" type="email" name="gcMembers[email][]">
+                    <input class="u-full-width" type="email" placeholder="example@ucf.edu" name="gcMembers[email][]">
                 </div>
                 <div class="three columns">
                     <input class="u-full-width" type="password" name="gcMembers[password][]">
