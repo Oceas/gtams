@@ -8,8 +8,8 @@
         <div class="six columns">
             <label>Session Apply For</label>
             <select class="u-full-width" name="session">
-                <option value="sessionID">FALL 2016</option>
-                <option value="sessionID">SPRING 2017</option>
+                <option value="FALL 2016">FALL 2016</option>
+                <option value="SPRING 2017">SPRING 2017</option>
             </select>
         </div>
     </div>
