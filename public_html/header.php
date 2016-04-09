@@ -15,3 +15,6 @@
 
 <!--ActionBar -->
 <?php require_once "actionbar.php" ?>
+
+<!--Opening the DataBase-->
+<?php require_once "dbopen.php" ?>
