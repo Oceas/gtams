@@ -1,4 +1,4 @@
-<form>
+<form action="dbregister.php" method="post">
     <div class="row">
         <div class="twelve columns text-center">
             <h3>GTA Registration Form</h3>
@@ -16,27 +16,27 @@
     <div class="row">
         <div class="six columns">
             <label for="firstName">First Name</label>
-            <input class="u-full-width" type="text" placeholder="John" id="firstName">
+            <input class="u-full-width" type="text" placeholder="John" name="firstName">
         </div>
         <div class="six columns">
             <label for="lastName">Last Name</label>
-            <input class="u-full-width" type="text" placeholder="Doe" id="lastName">
+            <input class="u-full-width" type="text" placeholder="Doe" name="lastName">
         </div>
     </div>
     <div class="row">
         <div class="six columns">
             <label for="email">Knights Email</label>
-            <input class="u-full-width" type="email" placeholder="example@knights.ucf.edu" id="email">
+            <input class="u-full-width" type="email" placeholder="example@knights.ucf.edu" name="email">
         </div>
         <div class="six columns">
             <label for="ucfid">UCFID: (formerly PID:no letter)</label>
-            <input class="u-full-width" type="text" placeholder="1324567" id="ucfid">
+            <input class="u-full-width" type="text" placeholder="1324567" name="ucfid">
         </div>
     </div>
     <div class="row">
         <div class="six columns">
             <label for="phoneNumber">Phone Number</label>
-            <input class="u-full-width" type="tel" placeholder="123-456-7890" id="phoneNumber">
+            <input class="u-full-width" type="tel" placeholder="123-456-7890" name="phoneNumber">
         </div>
         <div class="six columns">
             <label for="csStudent">Are you a PH.D. Student in Computer Science?</label>
@@ -50,11 +50,11 @@
     <div class="row">
         <div class="six columns">
             <label for="semestersGS">Number of semester (including summers) working as a graduate student</label>
-            <input class="u-full-width" type="text" placeholder="0" id="semestersGS">
+            <input class="u-full-width" type="text" placeholder="0" name="semestersGS">
         </div>
         <div class="six columns">
             <label for="speakTest">Have you passed the SPEAK Test?</label>
-            <select class="u-full-width" id="speakTest">
+            <select class="u-full-width" name="speakTest">
                 <option value="null">Please select one</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
@@ -67,7 +67,7 @@
         <div class="six columns">
             <label for="semestersGTA">Number of semesters (including summers) working as a graduate teaching
                 assistant</label>
-            <input class="u-full-width" type="text" placeholder="0" id="semestersGTA">
+            <input class="u-full-width" type="text" placeholder="0" name="semestersGTA">
         </div>
     </div>
     <div class="row">
@@ -122,11 +122,11 @@
     <div class="row">
         <div class="seven columns">
             <label for="currentAdvisorName">Name of current Ph.D. advisor at UCF</label>
-            <input class="u-full-width" type="text" placeholder="Dr. John Doe" id="currentAdvisor">
+            <input class="u-full-width" type="text" placeholder="Dr. John Doe" name="currentAdvisor">
         </div>
         <div class="five columns">
             <label for="currentAdvisorEmail">Current Ph.D. advisor's email</label>
-            <input class="u-full-width" type="email" placeholder="example@ucf.edu" id="currentAdvisorEmail">
+            <input class="u-full-width" type="email" placeholder="example@ucf.edu" name="currentAdvisorEmail">
         </div>
     </div>
     <div class="row">
