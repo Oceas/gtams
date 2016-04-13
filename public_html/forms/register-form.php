@@ -8,8 +8,15 @@
         <div class="six columns">
             <label>Session Apply For</label>
             <select class="u-full-width" name="session">
-                <option value="FALL 2016">FALL 2016</option>
-                <option value="SPRING 2017">SPRING 2017</option>
+              <?php
+                    $sth = $db->prepare("SELECT name FROM semester_sessions");
+                    $sth->execute();
+                    $result = $sth->fetchAll();
+
+                    foreach ($result as $key) {
+                      echo "<option>" . $key['name'] . "</option>";
+                    }
+               ?>
             </select>
         </div>
     </div>
