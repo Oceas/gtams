@@ -9,12 +9,13 @@
             <label>Session Apply For</label>
             <select class="u-full-width" name="session">
               <?php
-                    $sth = $db->prepare("SELECT name FROM semester_sessions");
+                    $sth = $dbh->prepare("SELECT name FROM semester_sessions");
                     $sth->execute();
                     $result = $sth->fetchAll();
 
                     foreach ($result as $key) {
                       echo "<option>" . $key['name'] . "</option>";
+                      echo $key['name'] . "<br>";
                     }
                ?>
             </select>
