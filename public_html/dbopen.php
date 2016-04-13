@@ -3,7 +3,7 @@
 $hostname = 'localhost';
 
 # MySQL Database
-$database = 'gtams';
+$database = 'gtasm';
 
 # MySQL Username
 $username = 'root';
