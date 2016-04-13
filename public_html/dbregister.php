@@ -12,6 +12,12 @@
     $gta = $_POST["semestersGTA"];
     $currA = $_POST["currentAdvisor"];
     $currAE = $_POST["currentAdvisorEmail"];
+    $gradc = $_POST[graduateCourse][course];
+    $gradg = $_POST[graduateCourse][grade];
+    $pub = $_POST[publications][publication];
+    $pub2 = $_POST[publications][citation];
+    $from = $_POST[previousAdivsors][from];
+    $till = $_POST[previousAdivsors][till];
 
     $phd = 0;
     if ($_POST["csStudent"] == 'yes') {
@@ -42,10 +48,33 @@
     $linkId = $linkId+1;
 
     //Passing data for Applicant Table
-    $sql = "INSERT INTO applicants (pid, email, first_name, last_name, phone_number, phd_of_cs, passed_speak, employee_semesters, student_semesters, semester_session_id, link_id)
+    $tot = 0;
+    $count = 0;
+
+    foreach ($gradg as $key => $n) {
+      if(strcmp($n,"A") == 0){
+        $tot += 4;
+      }elseif (strcmp($n,"B") == 0){
+        $tot += 3;
+      }elseif (strcmp($n,"C") == 0){
+        $tot += 2;
+      }elseif (strcmp($n,"D") == 0){
+        $tot += 1;
+      }
+      $count++;
+    }
+
+    $gpa = $tot/$count;
+
+    $sql = "INSERT INTO applicants (pid, email, first_name, last_name, phone_number, phd_of_cs, passed_speak, employee_semesters, student_semesters, semester_session_id, link_id,gpa)
             VALUES
-            ($pid, '$email', '$fname', '$lname', $pnumber, $phd, $speak, $gta, $sgs, $sessId,$linkId)";
-    $db->query($sql);
+            ($pid, '$email', '$fname', '$lname', $pnumber, $phd, $speak, $gta, $sgs, $sessId,$linkId,$gpa)";
+    $res = $db->query($sql);
+    $flag = 0;
+    if (!$res) {
+      echo "Errormessage: applicants insert failed"."<br>";
+      $flag++;
+    }
 
     //Passing data for current advisor
     $sth = $db->prepare("SELECT id FROM advisors WHERE email = '$currAE'");
@@ -58,33 +87,63 @@
     }
 
     $sql = "INSERT INTO applicant_advisors (current, applicant_pid, advisor_id) VALUES (1 ,$pid, $advisorId)";
-    $db->query($sql);
+    $res = $db->query($sql);
 
+    if (!$res) {
+      echo "Errormessage: applicant_advisors insert failed"."<br>";
+      $flag++;
+    }
     //Passing data for grad_courses Table
-    $gradc = $_POST[graduateCourse][course];
-    $gradg = $_POST[graduateCourse][grade];
-
     foreach ($gradc as $key => $n) {
-      $sql = "INSERT INTO grad_courses (course_name, grade, applicant_pid) VALUES ('$n', '$gradg[$key]', $pid)";
-      $db->query($sql);
+
+      $gradeVal = 0;
+      if(strcmp($gradg[$key],'A') == 0){
+        $gradeVal = 4;
+      }elseif (strcmp($gradg[$key],'B') == 0){
+        $gradeVal = 3;
+      }elseif (strcmp($gradg[$key],'C') == 0){
+        $gradeVal = 2;
+      }elseif (strcmp($gradg[$key],'D') == 0){
+        $gradeVal = 1;
+      }
+
+      $sql = "INSERT INTO grad_courses (course_name, grade, applicant_pid) VALUES ('$n',$gradeVal,$pid)";
+      $res = $db->query($sql);
+
+      if (!$res) {
+        echo "Errormessage: grad_courses insert failed"."<br>";
+        $flag++;
+      }
     }
 
     //Passing data for publications Tables
-    $pub = $_POST[publications][publication];
-    $pub2 = $_POST[publications][citation];
-
     foreach ($pub as $key => $n) {
       $sql = "INSERT INTO publications (title, citation, applicant_pid) VALUES ('$n', '$pub2[$key]', $pid)";
-      $db->query($sql);
+      $res = $db->query($sql);
+
+      if (!$res) {
+        echo "Errormessage: publications insert failed"."<br>";
+        $flag++;
+      }
     }
 
     //Passing data for prev advisors
-    $from = $_POST[previousAdivsors][from];
-    $till = $_POST[previousAdivsors][till];
-
+    //The hard coded 1 is for the past advisors
     foreach ($from as $key => $n) {
-      $sql = "INSERT INTO applicant_advisors (current, applicant_pid, advisor_id, time_period_start, time_period_end) VALUES (0 ,$pid, 1, $n, $till[$key])";
-      $db->query($sql);
+      $from = date("Y-m-d H:i:s", strtotime($n));
+      $end = date("Y-m-d H:i:s", strtotime($till[$key]));
+      $sql = "INSERT INTO applicant_advisors (current, applicant_pid, advisor_id, time_period_start, time_period_end) VALUES (0 ,$pid, 1, '$from', '$end')";
+      $res = $db->query($sql);
+
+      if (!$res) {
+        echo "Errormessage: prev applicant_advisors insert failed"."<br>";
+        $flag++;
+      }
+    }
+
+    if($flag == 0)
+    {
+      echo "Submited"."<br>";
     }
   }
 ?>
