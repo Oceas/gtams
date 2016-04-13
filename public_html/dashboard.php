@@ -16,6 +16,7 @@ require "header.php";
         <th>Advisor</th>
         <th>Nominee</th>
         <?php
+//Selects the GC members to dynamically add table horizontally. TODO: Add a dropdown bar to pick semester session names to check past sessions, then use session id to limit gc_members.
           $sth = $dbh->prepare("SELECT * FROM gc_members");
           $sth->execute();
           $gcmems = $sth->fetchAll();
@@ -31,12 +32,13 @@ require "header.php";
     </thead>
     <tbody>
     <?php
+//Basically an sql query that makes the table for us.
       $sth = $dbh->prepare("select ad.name, ap.first_name, ap.last_name, ap.pid from advisors ad, applicants ap, applicant_advisors aa
       where aa.applicant_pid=ap.pid && aa.advisor_id=ad.id
       order by ad.name");
       $sth->execute();
       $result = $sth->fetchAll();
-
+//This does the dynamic allocation vertically. It goes through the given gc_members and places their score.
       foreach ($result as $key) {
         echo "<tr id = '1'>";
           echo "<td>".$key['name']."</td>";
@@ -61,6 +63,8 @@ require "header.php";
           echo "<td>$avg</td>";
         echo "</tr>";
     }
+
+    //  TODO: Add code to make the rest of the table create popups. Then output the information to the popup and allow for score changing.
     ?>
     </tbody>
 </table>
