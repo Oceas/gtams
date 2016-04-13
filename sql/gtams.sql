@@ -81,7 +81,6 @@ CREATE TABLE grad_courses (
     course_name varchar(255)  NOT NULL,
     grade int  NOT NULL,
     applicant_pid int  NOT NULL,
-    UNIQUE INDEX grad_courses_taken_ak_1 (course_name),
     CONSTRAINT grad_courses_pk PRIMARY KEY (id)
 );
 
@@ -158,4 +157,3 @@ ALTER TABLE publications ADD CONSTRAINT publications_applicants FOREIGN KEY publ
 
 
 -- End of file.
-
