@@ -145,5 +145,25 @@
     {
       echo "Submited"."<br>";
     }
+
+      //query for letter submission deadline
+    $sth = $db->prepare("SELECT letter_deadline FROM semester_sessions WHERE name = '$sess'");
+    $sth-> execute();
+    $result = $sth->fetch(PDO::FETCH_ASSOC);
+
+    //format time for printing in email
+    foreach ($result as $key => $value) {
+      $temp = $value;
+    }
+    $letterDeadLine = date("r", strtotime($temp));
+
+    //format and create fields for mail. then send mail to advisors
+    $subject = "GTA application (AUTOMATED MAIL, DO NOT REPLY";
+    $siteLink = "http://localhost/gtams/public_html/forms/advisor-form.php?sessionId=$sessId&pid=$pid";
+   var_export($sessID);
+    $headers = "From: group1.cop4710@gmail.com";
+    $body1 = "The student " . $fname . " " . $lname ." with PID " . $pid . " submitted a GTA registration form. Please provide a letter of refernece by $letterDeadLine. The reference letter can be entered or uploaded at the following link: $siteLink";
+    mail ( $currAE, $subject, $body1, $headers );
+
   }
 ?>
