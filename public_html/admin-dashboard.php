@@ -1,9 +1,11 @@
 <?php
   $page_title = "Logout";
   require "header.php";
+  //This require allows me to not have to copy my code from the auxilliary file.
+  require "ad-dash_connect.php";
 ?>
 
-<form action="ad-dash_connect.php" method="post">
+<form method="post">
   <div class="row">
      <div class="twelve columns text-center">
          <h3>Create New Application Session</h3>

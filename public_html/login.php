@@ -10,8 +10,7 @@ require "footer.php";
 <?php
 if(!empty($_POST))
 {
-    //echo '<span style="color:#AFFS;text-align:center;"Invalid username or password.</span>';
-  //echo $_POST["email"] . "<br>" . $_POST["password"] . "<br>";
+  //Selects admins to check if the person logging in is admin.
 
   $sth = $dbh->prepare("SELECT * FROM system_admins");
   $sth->execute();
@@ -33,6 +32,7 @@ if(!empty($_POST))
     }
   }
 
+  //If the person logging in isn't an admin, check if it's a gc_member.
   if($registered == 5 || $registered == 0)
   {
     $sth = $dbh->prepare("SELECT * FROM gc_members");

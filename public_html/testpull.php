@@ -1,5 +1,11 @@
 <?php
 require "header.php";
+//---------------                                -----------------------------
+//          IGNORE THIS FILE, I COMITTED BY MISTAKE.
+//---------------                                -----------------------------
+
+
+
 /* $eleven = 12;
 //-----------------THIS IS TESTING RETRIEVING DATA FROM DATABSE---------------------------
 
