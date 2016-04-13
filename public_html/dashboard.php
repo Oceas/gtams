@@ -16,7 +16,7 @@ require "header.php";
         <th>Advisor</th>
         <th>Nominee</th>
         <?php
-          $sth = $db->prepare("SELECT * FROM gc_members");
+          $sth = $dbh->prepare("SELECT * FROM gc_members");
           $sth->execute();
           $gcmems = $sth->fetchAll();
           $count = 0;
@@ -31,7 +31,7 @@ require "header.php";
     </thead>
     <tbody>
     <?php
-      $sth = $db->prepare("select ad.name, ap.first_name, ap.last_name, ap.pid from advisors ad, applicants ap, applicant_advisors aa
+      $sth = $dbh->prepare("select ad.name, ap.first_name, ap.last_name, ap.pid from advisors ad, applicants ap, applicant_advisors aa
       where aa.applicant_pid=ap.pid && aa.advisor_id=ad.id
       order by ad.name");
       $sth->execute();
@@ -46,7 +46,7 @@ require "header.php";
           $count = 0;
           foreach ($gcmems as $r)
           {
-            $sth = $db->prepare("SELECT s.value FROM gc_scores s, applicants a, gc_members g WHERE a.semester_session_id = g.semester_session_id && s.applicants_pid = a.pid && s.gc_members_id = g.id && a.pid = " . $key['pid'] . " && g.id = " . $r['id']);
+            $sth = $dbh->prepare("SELECT s.value FROM gc_scores s, applicants a, gc_members g WHERE a.semester_session_id = g.semester_session_id && s.applicants_pid = a.pid && s.gc_members_id = g.id && a.pid = " . $key['pid'] . " && g.id = " . $r['id']);
             $sth->execute();
             $gcval = $sth->fetchAll();
             foreach($gcval as $g)
