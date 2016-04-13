@@ -16,5 +16,13 @@
 <!--ActionBar -->
 <?php require_once "actionbar.php" ?>
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <!--Opening the DataBase-->
+=======
+<!--Opening the Database -->
+>>>>>>> Stashed changes
+=======
+<!--Opening the Database -->
+>>>>>>> Stashed changes
 <?php require_once "dbopen.php" ?>
