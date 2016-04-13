@@ -30,7 +30,7 @@
     }
 
     $sess = $_POST["session"];
-    $sth = $db->prepare("SELECT id FROM semester_sessions WHERE name = '$sess'");
+    $sth = $dbh->prepare("SELECT id FROM semester_sessions WHERE name = '$sess'");
     $sth->execute();
     $result = $sth->fetch(PDO::FETCH_ASSOC);
 
@@ -38,7 +38,7 @@
       $sessId = $value;
     }
 
-    $sth = $db->prepare("SELECT MAX(link_id) FROM applicants");
+    $sth = $dbh->prepare("SELECT MAX(link_id) FROM applicants");
     $sth->execute();
     $result = $sth->fetch(PDO::FETCH_ASSOC);
 
@@ -69,7 +69,7 @@
     $sql = "INSERT INTO applicants (pid, email, first_name, last_name, phone_number, phd_of_cs, passed_speak, employee_semesters, student_semesters, semester_session_id, link_id,gpa)
             VALUES
             ($pid, '$email', '$fname', '$lname', $pnumber, $phd, $speak, $gta, $sgs, $sessId,$linkId,$gpa)";
-    $res = $db->query($sql);
+    $res = $dbh->query($sql);
     $flag = 0;
     if (!$res) {
       echo "Errormessage: applicants insert failed"."<br>";
@@ -77,7 +77,7 @@
     }
 
     //Passing data for current advisor
-    $sth = $db->prepare("SELECT id FROM advisors WHERE email = '$currAE'");
+    $sth = $dbh->prepare("SELECT id FROM advisors WHERE email = '$currAE'");
     $sth->execute();
     $result = $sth->fetch(PDO::FETCH_ASSOC);
 
@@ -87,7 +87,7 @@
     }
 
     $sql = "INSERT INTO applicant_advisors (current, applicant_pid, advisor_id) VALUES (1 ,$pid, $advisorId)";
-    $res = $db->query($sql);
+    $res = $dbh->query($sql);
 
     if (!$res) {
       echo "Errormessage: applicant_advisors insert failed"."<br>";
@@ -108,7 +108,7 @@
       }
 
       $sql = "INSERT INTO grad_courses (course_name, grade, applicant_pid) VALUES ('$n',$gradeVal,$pid)";
-      $res = $db->query($sql);
+      $res = $dbh->query($sql);
 
       if (!$res) {
         echo "Errormessage: grad_courses insert failed"."<br>";
@@ -119,7 +119,7 @@
     //Passing data for publications Tables
     foreach ($pub as $key => $n) {
       $sql = "INSERT INTO publications (title, citation, applicant_pid) VALUES ('$n', '$pub2[$key]', $pid)";
-      $res = $db->query($sql);
+      $res = $dbh->query($sql);
 
       if (!$res) {
         echo "Errormessage: publications insert failed"."<br>";
@@ -133,7 +133,7 @@
       $from = date("Y-m-d H:i:s", strtotime($n));
       $end = date("Y-m-d H:i:s", strtotime($till[$key]));
       $sql = "INSERT INTO applicant_advisors (current, applicant_pid, advisor_id, time_period_start, time_period_end) VALUES (0 ,$pid, 1, '$from', '$end')";
-      $res = $db->query($sql);
+      $res = $dbh->query($sql);
 
       if (!$res) {
         echo "Errormessage: prev applicant_advisors insert failed"."<br>";
