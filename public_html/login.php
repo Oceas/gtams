@@ -45,7 +45,7 @@ if(!empty($_POST))
       {
           $cookiename = $r['id'];
           $cookievalue = $r['email'];
-          setcookie($cookiename, )
+          //setcookie($cookiename, )
           $registered = 2;
           break;
       }

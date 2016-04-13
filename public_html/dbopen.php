@@ -6,10 +6,10 @@ $hostname = 'localhost';
 $database = 'gtams';
 
 # MySQL Username
-$username = '';
+$username = 'root';
 
 # MySQL Password
-$password = '';
+$password = 'b7863781051';
 
 # First we connect to the database. If this fail, it catch a PDOException, and an error message occurs.
 try
