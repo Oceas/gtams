@@ -1,15 +1,24 @@
 <?php
-//user
-$user = '';
+# MySQL Hostname
+$hostname = 'localhost';
 
-//password
-$passwd = '';
+# MySQL Database
+$database = 'gtams';
 
-//Connecting to the DataBase
-try {
-    $db = new PDO('mysql:host=localhost;dbname=gtams', $user, $passwd);
-} catch (PDOException $e) {
-    echo $e->getMessage()."<br>";
-    die();
+# MySQL Username
+$username = '';
+
+# MySQL Password
+$password = '';
+
+# First we connect to the database. If this fail, it catch a PDOException, and an error message occurs.
+try
+{
+$dbh = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
+//echo 'Connected';
+}
+catch (PDOException $e)
+{
+echo "Didnt connect: " . $e->getMessage();
 }
 ?>
