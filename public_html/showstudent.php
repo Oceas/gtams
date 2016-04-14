@@ -5,59 +5,109 @@ if (!empty($_POST)) {
    header('Location: dashboard.php');
 }
 
+ $sth = $dbh->prepare("SELECT * from applicants WHERE ".$_POST['pid']." = pid");
+ $sth->execute();
+ $apData = $sth->fetchAll();
+
+ foreach ($apData as $n) {
+   $applicantsData = $n;
+ }
+
+
+if( $applicantsData['phd_of_cs'] == 1)
+{
+  $phd = "Yes";
+} else {
+  $phd = "No";
+}
+
+if( $applicantsData['passed_speak'] == 1)
+{
+  $speak = "Yes";
+} else {
+  $speak = "No";
+}
+
+ $sth = $dbh->prepare("SELECT * from grad_courses WHERE ".$_POST['pid']." = applicant_pid");
+ $sth->execute();
+ $GCData = $sth->fetchAll();
+
+ $sth = $dbh->prepare("SELECT * from publications WHERE ".$_POST['pid']." = applicant_pid");
+ $sth->execute();
+ $pubData = $sth->fetchAll();
+
+ $sth = $dbh->prepare("SELECT advisor_id from applicant_advisors WHERE ".$_POST['pid']." = applicant_pid && 1 = current");
+ $sth->execute();
+ $curr = $sth->fetchAll();
+
+ foreach ($curr as $n) {
+   $currID = $n;
+ }
+
+ $sth = $dbh->prepare("SELECT * from advisors WHERE ". $currID['advisor_id']." = id");
+ $sth->execute();
+ $currAll = $sth->fetchAll();
+
+ foreach ($currAll as $n) {
+   $currDone = $n;
+ }
+
+ $sth = $dbh->prepare("SELECT * from applicant_advisors WHERE ".$_POST['pid']." = applicant_pid && 0 = current");
+ $sth->execute();
+ $PrevAd = $sth->fetchAll();
 
 ?>
 
 <div class="row">
     <div class="six columns">
         <label>First Name</label>
-        <input class="u-full-width" type="text" placeholder="John" readonly>
+        <input class="u-full-width" type="text" placeholder= <?php echo $applicantsData['first_name']; ?> readonly>
     </div>
     <div class="six columns">
         <label>Last Name</label>
-        <input class="u-full-width" type="text" placeholder="Doe" readonly>
+        <input class="u-full-width" type="text" placeholder=<?php echo $applicantsData['last_name']; ?> readonly>
     </div>
 </div>
 <div class="row">
     <div class="six columns">
         <label>Knights Email</label>
-        <input class="u-full-width" type="email" placeholder="johndoe@knights.ucf.edu" readonly>
+        <input class="u-full-width" type="email" placeholder=<?php echo $applicantsData['email']; ?> readonly>
     </div>
     <div class="six columns">
         <label>UCFID: (formerly PID:no letter)</label>
-        <input class="u-full-width" type="text" placeholder="1234567" readonly>
+        <input class="u-full-width" type="text" placeholder=<?php echo $applicantsData['pid']; ?> readonly>
     </div>
 </div>
 <div class="row">
     <div class="six columns">
         <label>Phone Number</label>
-        <input class="u-full-width" type="text" placeholder="123-456-7890" readonly>
+        <input class="u-full-width" type="text" placeholder= <?php echo $applicantsData['phone_number']; ?> readonly>
     </div>
 </div>
 <div class="row">
     <div class="six columns">
         <label>Is a PH.D.Computer Science Student</label>
-        <input class="u-full-width" type="text" placeholder="Yes" readonly>
+        <input class="u-full-width" type="text" placeholder= <?php echo $phd; ?> readonly>
     </div>
     <div class="six columns">
         <label>Has passed the SPEAK Test</label>
-        <input class="u-full-width" type="text" placeholder="Yes" readonly>
+        <input class="u-full-width" type="text" placeholder=<?php echo $speak; ?> readonly>
     </div>
 </div>
 <div class="row">
     <div class="six columns">
         <label>Number of semesters (including summers) working as a graduate teaching assistant</label>
-        <input class="u-full-width" type="text" placeholder="2" readonly>
+        <input class="u-full-width" type="text" placeholder=<?php echo $applicantsData['student_semesters']; ?> readonly>
     </div>
     <div class="six columns">
         <label>Number of semester (including summers) working as a graduate student</label>
-        <input class="u-full-width" type="text" placeholder="5" readonly>
+        <input class="u-full-width" type="text" placeholder=<?php echo $applicantsData['employee_semesters']; ?> readonly>
     </div>
 </div>
 <div class="row">
     <div class="six columns">
         <label>Current GPA</label>
-        <input class="u-full-width" type="text" placeholder="3.25" readonly>
+        <input class="u-full-width" type="text" placeholder= <?php echo $applicantsData['gpa']; ?> readonly>
     </div>
 </div>
 <div class="row">
@@ -69,10 +119,14 @@ if (!empty($_POST)) {
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>COP XXXX</td>
-            <td>B</td>
-        </tr>
+        <?php
+        foreach ($GCData as $n) {
+          echo "<tr>";
+            echo "<td>".$n['course_name']."</td>";
+            echo "<td>".$n['grade']."</td>";
+          echo "</tr>";
+        }
+        ?>
         </tbody>
     </table>
 </div>
@@ -85,21 +139,25 @@ if (!empty($_POST)) {
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Changes in XXXXXX for XXXXXX</td>
-            <td>ACM: 2016 XXXX</td>
-        </tr>
+          <?php
+          foreach ($pubData as $key => $n) {
+            echo "<tr>";
+              echo "<td>".$n['title']."</td>";
+              echo "<td>".$n['citation']."</td>";
+            echo "</tr>";
+          }
+          ?>
         </tbody>
     </table>
 </div>
 <div class="row">
     <div class="six columns">
         <label>Name of current Ph.D. advisor at UCF</label>
-        <input class="u-full-width" type="text" placeholder="Dr. John Doe" readonly>
+        <input class="u-full-width" type="text" placeholder= <?php echo $currDone['name']; ?> readonly>
     </div>
     <div class="six columns">
         <label>Current Ph.D. advisor's email</label>
-        <input class="u-full-width" type="text" placeholder="example@ucf.edu" readonly>
+        <input class="u-full-width" type="text" placeholder=<?php echo $currDone['email']; ?> readonly>
     </div>
 </div>
 <div class="row">
@@ -112,11 +170,22 @@ if (!empty($_POST)) {
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Dr. Jane Doe</td>
-            <td>02/04/2015</td>
-            <td>08/04/2016</td>
-        </tr>
+        <?php
+        foreach ($PrevAd as $n) {
+          $sth = $dbh->prepare("SELECT name from advisors WHERE ".$n['advisor_id']." = id");
+          $sth->execute();
+          $PrevName = $sth->fetchAll();
+
+          foreach ($PrevName as $key) {
+            $name = $key['name'];
+          }
+          echo "<tr>";
+            echo "<td>".$name."</td>";
+            echo "<td>".$n['time_period_start']."</td>";
+            echo "<td>".$n['time_period_end']."</td>";
+          echo "</tr>";
+        }
+        ?>
         </tbody>
     </table>
 </div>
