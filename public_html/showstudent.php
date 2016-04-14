@@ -60,6 +60,23 @@ if( $applicantsData['passed_speak'] == 1)
 
 <div class="row">
     <div class="six columns">
+        <label>Application Status</label>
+          <input class="u-full-width" type="text" placeholder=
+          <?php
+            if($applicantsData['application_status'] == 0){
+              echo "Currently-Being-Reviewed";
+            }elseif ($applicantsData['application_status'] == 2) {
+              echo "Application-Deadline-Missed";
+            }elseif ($applicantsData['application_status'] == 3) {
+              echo "Advisor-Letter-Deadline-Missed";
+            }
+          ?>
+          readonly>
+    </div>
+</div>
+
+<div class="row">
+    <div class="six columns">
         <label>First Name</label>
         <input class="u-full-width" type="text" placeholder= <?php echo $applicantsData['first_name']; ?> readonly>
     </div>
