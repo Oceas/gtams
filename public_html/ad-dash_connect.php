@@ -10,7 +10,6 @@
 </div>
 
 <?php
-echo "The session vars are: " . $_SESSION["type"] . $_SESSION["id"] . $_SESSION["email"];
 //Checks for submission from the html code.
 if(!empty($_POST)){
   //require "header.php";

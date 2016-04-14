@@ -12,7 +12,6 @@
 <?php
 $page_title = "Register";
 require "header.php";
-echo "The session vars are: " . $_SESSION["type"] . $_SESSION["id"] . $_SESSION["email"];
 ?>
 
 <div class="row">

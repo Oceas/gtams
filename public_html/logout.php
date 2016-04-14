@@ -11,7 +11,6 @@
 
 <?php
   session_unset();
-  echo "The session vars are: " . $_SESSION["type"] . $_SESSION["id"] . $_SESSION["email"];
   $page_title = "Logout";
   require "header.php";
 ?>
