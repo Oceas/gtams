@@ -77,7 +77,7 @@
              </div>
          </div>
          <div class="row">
-             <div class="three columns">
+             <div class="six columns">
                  <input class="u-full-width button-primary" type="button" onclick="addGCMember('dynamic-gcmembers');" value="Add Another GC Member">
              </div>
          </div>
