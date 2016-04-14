@@ -1,3 +1,8 @@
+<?php
+//Starts the session.
+require_once "sessionstart.php";
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +16,9 @@
 <body>
 
 <!--Navbar -->
-<?php require_once "navbar.php" ?>
+<?php require "navbar.php" ?>
 
 <!--Opening the Database -->
 <?php require_once "dbopen.php" ?>
 
-<?php require "system_management.php" ?> 
+<?php require "system_management.php" ?>

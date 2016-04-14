@@ -22,7 +22,9 @@ if(!empty($_POST))
   {
     if($r['email'] == $_POST['email'] && $r['password_digest'] == $_POST['password'])
     {
-        //setcookie()
+        $_SESSION["type"] = "admin";
+        $_SESSION["email"] = $_POST['email'];
+        $_SESSION["id"] = $_POST['id'];
         $registered = 1;
         break;
     }
@@ -43,9 +45,9 @@ if(!empty($_POST))
     {
       if($r['email'] == $_POST['email'] && $r['password_digest'] == $_POST['password'])
       {
-          $cookiename = $r['id'];
-          $cookievalue = $r['email'];
-          //setcookie($cookiename, )
+        $_SESSION["type"] = "gc";
+        $_SESSION["email"] = $_POST['email'];
+        $_SESSION["id"] = $_POST['id'];
           $registered = 2;
           break;
       }
