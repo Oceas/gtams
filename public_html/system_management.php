@@ -94,7 +94,7 @@ function checkStatus($appDeadTS, $letDeadTS, $curSem, $dbh)
     {
       $deadlinePassed = "UPDATE applicants SET application_status = 2 WHERE pid = " . $r['pid'];
       $dbh->query($deadlinePassed);
-      echo "Applicant set to application deadline passed <br>";
+      //echo "Applicant set to application deadline passed <br>";
       continue;
     }
 
@@ -107,7 +107,7 @@ function checkStatus($appDeadTS, $letDeadTS, $curSem, $dbh)
       {
         $deadlinePassed = "UPDATE applicants SET application_status = 3 WHERE pid = " . $r['pid'];
         $dbh->query($deadlinePassed);
-        echo "Applicant set to letter deadline passed <br>";
+        //echo "Applicant set to letter deadline passed <br>";
         continue;
       }
     }
