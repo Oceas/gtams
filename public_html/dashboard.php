@@ -85,36 +85,6 @@ require "header.php";
     </table>
 </div>
 
-<div id="userDialog" class="dialog hidden">
-    <div class="dialog-body">
-        <div class="dialog-header">
-            <div class="row">
-                <div class="six columns">
-                    Scott Anderson's Record
-                </div>
-                <div class="six columns">
-                    <span id="closeUserDialog" class="close">×</span>
-                </div>
-            </div>
-        </div><!--   End of Dialog Header     -->
-        <div class="dialog-content">
-            <div class="row">
-                Applicant Information
-            </div>
-            <div class="row">
-                Advisor Information
-            </div>
-            <div class="row">
-                GCS Scores
-            </div>
-            <div class="row">
-                Leave a score
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <script>
     var dialog = document.getElementById("userDialog");
     var record = document.getElementById("1");
