@@ -70,7 +70,7 @@ if(!empty($_POST)){
       emailGC($r['email'], $r['email'], $r['password_digest']);
     }
   }
-  echo "Semester Session successfully created.<br>"
+  echo "Semester Session successfully created.<br>";
 
 }
 ?>

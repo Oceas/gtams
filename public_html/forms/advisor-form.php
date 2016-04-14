@@ -23,6 +23,6 @@
 </form>
 
 
-<?php 
+<?php
 require "../reference.php"
- ?>
+?>

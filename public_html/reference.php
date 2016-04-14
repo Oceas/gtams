@@ -11,12 +11,6 @@
       var_dump($sql);
       //die;
       $dbh->query($sql);
-
-
-
-
-
-
    }
 
 ?>

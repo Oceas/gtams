@@ -9,7 +9,7 @@ $database = 'gtams';
 $username = 'root';
 
 # MySQL Password
-$password = 'sqlroot';
+$password = 'root';
 
 # First we connect to the database. If this fail, it catch a PDOException, and an error message occurs.
 try
