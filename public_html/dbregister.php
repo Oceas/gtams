@@ -158,7 +158,7 @@
 
     //format and create fields for mail. then send mail to advisors
     $subject = "GTA application (AUTOMATED MAIL, DO NOT REPLY";
-    $siteLink = "http://localhost/gtams/public_html/forms/advisor-form.php?sessionId=$sessId&pid=$pid";
+    $siteLink = "http://localhost/gtams/public_html/reference.php?sessionId=$sessId&pid=$pid";
    var_export($sessId);
     $headers = "From: group1.cop4710@gmail.com";
     $body1 = "The student " . $fname . " " . $lname ." with PID " . $pid . " submitted a GTA registration form. Please provide a letter of refernece by $letterDeadLine. The reference letter can be entered or uploaded at the following link: $siteLink";
