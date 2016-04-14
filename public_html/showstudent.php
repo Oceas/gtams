@@ -5,6 +5,18 @@ if (!empty($_POST)) {
    header('Location: dashboard.php');
 }
 
+if($_POST['score'] != 0 && $_SESSION['id'] != 0)
+{
+  $sql = "INSERT INTO gc_scores (value, applicants_pid, gc_members_id) VALUES (".$_POST['score'].", ".$_POST['pid'].", ".$_SESSION['id'].")";
+  $res = $dbh->query($sql);
+
+  if (!$res) {
+    echo "Errormessage: gc_scores insert failed"."<br>";
+  }else {
+    echo "Score is Submited";
+  }
+}
+
  $sth = $dbh->prepare("SELECT * from applicants WHERE ".$_POST['pid']." = pid");
  $sth->execute();
  $apData = $sth->fetchAll();
@@ -57,11 +69,11 @@ if( $applicantsData['passed_speak'] == 1)
  $PrevAd = $sth->fetchAll();
 
 ?>
-
+<form  action="showstudent.php" method="post">
 <div class="row">
     <div class="six columns">
         <label>Application Status</label>
-          <input class="u-full-width" type="text" placeholder=
+          <input class="u-full-width" type="text" value=
           <?php
             if($applicantsData['application_status'] == 0){
               echo "Currently-Being-Reviewed";
@@ -78,53 +90,53 @@ if( $applicantsData['passed_speak'] == 1)
 <div class="row">
     <div class="six columns">
         <label>First Name</label>
-        <input class="u-full-width" type="text" placeholder= <?php echo $applicantsData['first_name']; ?> readonly>
+        <input class="u-full-width" type="text" value= <?php echo $applicantsData['first_name']; ?> readonly>
     </div>
     <div class="six columns">
         <label>Last Name</label>
-        <input class="u-full-width" type="text" placeholder=<?php echo $applicantsData['last_name']; ?> readonly>
+        <input class="u-full-width" type="text" value=<?php echo $applicantsData['last_name']; ?> readonly>
     </div>
 </div>
 <div class="row">
     <div class="six columns">
         <label>Knights Email</label>
-        <input class="u-full-width" type="email" placeholder=<?php echo $applicantsData['email']; ?> readonly>
+        <input class="u-full-width" type="email" value=<?php echo $applicantsData['email']; ?> readonly>
     </div>
     <div class="six columns">
         <label>UCFID: (formerly PID:no letter)</label>
-        <input class="u-full-width" type="text" placeholder=<?php echo $applicantsData['pid']; ?> readonly>
+        <input class="u-full-width" type="text" name="pid" value=<?php echo $applicantsData['pid']; ?> readonly>
     </div>
 </div>
 <div class="row">
     <div class="six columns">
         <label>Phone Number</label>
-        <input class="u-full-width" type="text" placeholder= <?php echo $applicantsData['phone_number']; ?> readonly>
+        <input class="u-full-width" type="text" value= <?php echo $applicantsData['phone_number']; ?> readonly>
     </div>
 </div>
 <div class="row">
     <div class="six columns">
         <label>Is a PH.D.Computer Science Student</label>
-        <input class="u-full-width" type="text" placeholder= <?php echo $phd; ?> readonly>
+        <input class="u-full-width" type="text" value= <?php echo $phd; ?> readonly>
     </div>
     <div class="six columns">
         <label>Has passed the SPEAK Test</label>
-        <input class="u-full-width" type="text" placeholder=<?php echo $speak; ?> readonly>
+        <input class="u-full-width" type="text" value=<?php echo $speak; ?> readonly>
     </div>
 </div>
 <div class="row">
     <div class="six columns">
         <label>Number of semesters (including summers) working as a graduate teaching assistant</label>
-        <input class="u-full-width" type="text" placeholder=<?php echo $applicantsData['student_semesters']; ?> readonly>
+        <input class="u-full-width" type="text" value=<?php echo $applicantsData['student_semesters']; ?> readonly>
     </div>
     <div class="six columns">
         <label>Number of semester (including summers) working as a graduate student</label>
-        <input class="u-full-width" type="text" placeholder=<?php echo $applicantsData['employee_semesters']; ?> readonly>
+        <input class="u-full-width" type="text" value=<?php echo $applicantsData['employee_semesters']; ?> readonly>
     </div>
 </div>
 <div class="row">
     <div class="six columns">
         <label>Current GPA</label>
-        <input class="u-full-width" type="text" placeholder= <?php echo $applicantsData['gpa']; ?> readonly>
+        <input class="u-full-width" type="text" value= <?php echo $applicantsData['gpa']; ?> readonly>
     </div>
 </div>
 <div class="row">
@@ -170,11 +182,11 @@ if( $applicantsData['passed_speak'] == 1)
 <div class="row">
     <div class="six columns">
         <label>Name of current Ph.D. advisor at UCF</label>
-        <input class="u-full-width" type="text" placeholder= <?php echo $currDone['name']; ?> readonly>
+        <input class="u-full-width" type="text" value= <?php echo $currDone['name']; ?> readonly>
     </div>
     <div class="six columns">
         <label>Current Ph.D. advisor's email</label>
-        <input class="u-full-width" type="text" placeholder=<?php echo $currDone['email']; ?> readonly>
+        <input class="u-full-width" type="text" value=<?php echo $currDone['email']; ?> readonly>
     </div>
 </div>
 <div class="row">
@@ -210,7 +222,7 @@ if( $applicantsData['passed_speak'] == 1)
 <div class="row">
     <div class="twelve columns">
         <label>Advisor's Letter</label>
-        <textarea style="height:150px;" class="u-full-width" placeholder="Filler Text" readonly></textarea>
+        <textarea style="height:150px;" class="u-full-width" value="Filler Text" readonly></textarea>
     </div>
 </div>
 <!--If a file is available display this-->
@@ -220,16 +232,15 @@ if( $applicantsData['passed_speak'] == 1)
     </div>
 </div>
 <hr>
-<form method="post">
     <div class="row">
         <div class="six columns">
             <label>Your Score for the Student</label>
-            <input class="u-full-width button-primary" type="text" name="score" placeholder="80">
+            <input class="u-full-width button-primary" type="text" name="score" value="80">
         </div>
     </div>
     <div class="row">
         <div class="six columns">
-            <input class="u-full-width button-primary" type="button" name="submitScore" value="Submit Score">
+            <input class="u-full-width button-primary" type="submit" name="submitScore" value="Submit Score">
         </div>
     </div>
 </form>
