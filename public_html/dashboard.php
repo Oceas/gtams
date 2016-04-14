@@ -51,14 +51,23 @@ require "header.php";
         <tbody>
         <?php
         //Basically an sql query that makes the table for us.
-        $sth = $dbh->prepare("select ad.name, ap.first_name, ap.last_name, ap.pid from advisors ad, applicants ap, applicant_advisors aa
+        $sth = $dbh->prepare("select ad.name, ap.first_name, ap.last_name, ap.pid, ap.semester_session_id, ad.id from advisors ad, applicants ap, applicant_advisors aa
       where aa.applicant_pid=ap.pid && aa.advisor_id=ad.id
       order by ad.name");
         $sth->execute();
         $result = $sth->fetchAll();
         //This does the dynamic allocation vertically. It goes through the given gc_members and places their score.
         foreach ($result as $key) {
-//            echo "<tr id = '$key['pid']'>";
+
+          $sth = $dbh->prepare("SELECT current from applicant_advisors WHERE ".$key['pid']." = applicant_pid && ".$key['id']." = advisor_id");
+          $sth->execute();
+          $currentAd = $sth->fetchAll();
+
+          foreach ($currentAd as $n) {
+            $det = $n['current'];
+          }
+
+          if($n['current'] == 1){
             echo "<tr>";
             echo "<td>" . $key['name'] . "</td>";
             echo "<td>" . $key['first_name'] . " " . $key['last_name'] . "</td>";
@@ -79,6 +88,7 @@ require "header.php";
             $avg = $sum / $count;
             echo "<td>$avg</td>";
             echo "<td><input onclick=\"showStudent('" . $key['pid'] . "');\" class=\"button-primary\" type=\"button\" value=\"View\"></td>";
+          }
         }
 
         //  TODO: Add code to make the rest of the table create popups. Then output the information to the popup and allow for score changing.
@@ -104,4 +114,3 @@ require "header.php";
         form.submit();
     }
 </script>
-
