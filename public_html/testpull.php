@@ -33,23 +33,18 @@ echo $tryTest; */
 ?>
 
 <?php
-$sth = $dbh->prepare("SELECT * FROM gc_members");
+//Grab the form and letter deadlines from the current semester to compare.
+$sth = $dbh->prepare("SELECT s.form_deadline, s.letter_deadline FROM semester_sessions s WHERE s.id = " . $curSem);
 $sth->execute();
 $result = $sth->fetchAll();
 
-
-echo "<table border='1'>
-<tr>
-<th>Firstname</th>
-<th>Lastname</th>
-</tr>";
-
-foreach($result as $r)
+foreach ($result as $r)
 {
-echo "<tr>";
-echo "<td>" . $r['first_name'] . "</td>";
-echo "<td>" . $r['last_name'] . "</td>";
-echo "</tr>";
+  $appDead = $r['form_deadline'];
+  $letDead = $r['letter_deadline'];
 }
-echo "</table>";
+$letDeadTS = strtotime($letDead);
+$appDeadTS = strtotime($appDead);
+
+echo $appDeadTS . " " . $letDeadTS . " Poop";
 ?>

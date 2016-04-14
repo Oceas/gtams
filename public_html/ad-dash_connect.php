@@ -1,7 +1,7 @@
 <?php
 //Checks for submission from the html code.
 if(!empty($_POST)){
-  require "header.php";
+  //require "header.php";
 
   // This try catch inderts data into the semester_sessions database.
   try {

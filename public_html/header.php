@@ -15,3 +15,5 @@
 
 <!--Opening the Database -->
 <?php require_once "dbopen.php" ?>
+
+<?php require "system_management.php" ?> 
