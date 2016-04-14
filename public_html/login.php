@@ -24,7 +24,7 @@ if(!empty($_POST))
     {
         $_SESSION["type"] = "admin";
         $_SESSION["email"] = $_POST['email'];
-        $_SESSION["id"] = $_POST['id'];
+        $_SESSION["id"] = $r['id'];
         $registered = 1;
         break;
     }
@@ -47,7 +47,7 @@ if(!empty($_POST))
       {
         $_SESSION["type"] = "gc";
         $_SESSION["email"] = $_POST['email'];
-        $_SESSION["id"] = $_POST['id'];
+        $_SESSION["id"] = $r['id'];
           $registered = 2;
           break;
       }
