@@ -1,4 +1,4 @@
-<form formdatamethod="post" enctype="multipart/form-data">
+<form action="../reference.php" method="post" enctype="multipart/form-data">
  <div class="row">
      <div class="twelve columns text-center">
          <h3>Advisor Form</h3>
@@ -24,5 +24,5 @@
 
 
 <?php 
-require "reference.php"
+require "../reference.php"
  ?>

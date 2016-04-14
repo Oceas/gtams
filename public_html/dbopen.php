@@ -3,13 +3,13 @@
 $hostname = 'localhost';
 
 # MySQL Database
-$database = 'gtasm';
+$database = 'gtams';
 
 # MySQL Username
 $username = 'root';
 
 # MySQL Password
-$password = 'b7863781051';
+$password = 'sqlroot';
 
 # First we connect to the database. If this fail, it catch a PDOException, and an error message occurs.
 try
