@@ -13,8 +13,5 @@
 <!--Navbar -->
 <?php require_once "navbar.php" ?>
 
-<!--ActionBar -->
-<?php require_once "actionbar.php" ?>
-
 <!--Opening the Database -->
 <?php require_once "dbopen.php" ?>
