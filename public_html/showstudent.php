@@ -202,8 +202,17 @@ if( $applicantsData['passed_speak'] == 1)
         <input class="u-full-width button-primary" type="button" value="Download Advisor's Letter">
     </div>
 </div>
-<div class="row">
-    <div class="six columns">
-        <input class="u-full-width button-primary" type="button" value="Submit Score">
+<hr>
+<form method="post">
+    <div class="row">
+        <div class="six columns">
+            <label>Your Score for the Student</label>
+            <input class="u-full-width button-primary" type="text" name="score" placeholder="80">
+        </div>
     </div>
-</div>
+    <div class="row">
+        <div class="six columns">
+            <input class="u-full-width button-primary" type="button" name="submitScore" value="Submit Score">
+        </div>
+    </div>
+</form>
