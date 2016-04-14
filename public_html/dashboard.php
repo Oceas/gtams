@@ -13,18 +13,21 @@ require "header.php";
 <div class="row">
     <div class="four columns">
         <label>Current Session</label>
-        <select class="u-full-width" name="session">
-            <?php
-            $sth = $dbh->prepare("SELECT name FROM semester_sessions");
-            $sth->execute();
-            $result = $sth->fetchAll();
+        <form action="dashboard.php" method="POST">
+          <select class="u-full-width" name="session">
+              <?php
+              $sth = $dbh->prepare("SELECT name, id FROM semester_sessions");
+              $sth->execute();
+              $result = $sth->fetchAll();
 
-            foreach ($result as $key) {
-                echo "<option>" . $key['name'] . "</option>";
-                echo $key['name'] . "<br>";
-            }
-            ?>
-        </select>
+              foreach ($result as $key) {
+                  echo "<option value ='".$key['id']."'>'" . $key['name'] . "</option>";
+                  echo $key['name'] . "<br>";
+              }
+              ?>
+          </select>
+          <input type="submit" name="dashRefresh" value="Refresh">
+        </form>
     </div>
 </div>
 <div clas="row">
@@ -34,8 +37,24 @@ require "header.php";
             <th>Advisor</th>
             <th>Nominee</th>
             <?php
+            if(isset($_POST['dashRefresh']))
+            {
+              $seshID = $_POST['session'];
+            }
+            else
+            {
+              $sth = $dbh->prepare("SELECT MAX(id) AS max FROM semester_sessions");
+              $sth-> execute();
+              $result = $sth->fetchAll();
+
+              //Set the result from before as $curSem. (Current Semester)
+              foreach ($result as $r)
+              {
+                $seshID = $r['max'];
+              }
+            }
             //Selects the GC members to dynamically add table horizontally. TODO: Add a dropdown bar to pick semester session names to check past sessions, then use session id to limit gc_members.
-            $sth = $dbh->prepare("SELECT * FROM gc_members");
+            $sth = $dbh->prepare("SELECT * FROM gc_members WHERE semester_session_id = " . $seshID);
             $sth->execute();
             $gcmems = $sth->fetchAll();
             $count = 0;
