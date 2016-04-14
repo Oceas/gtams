@@ -45,6 +45,7 @@ require "header.php";
             }
             ?>
             <th>Average Score</th>
+            <th>Show Record</th>
         </tr>
         </thead>
         <tbody>
@@ -57,7 +58,8 @@ require "header.php";
         $result = $sth->fetchAll();
         //This does the dynamic allocation vertically. It goes through the given gc_members and places their score.
         foreach ($result as $key) {
-            echo "<tr id = '1'>";
+//            echo "<tr id = '$key['pid']'>";
+            echo "<tr>";
             echo "<td>" . $key['name'] . "</td>";
             echo "<td>" . $key['first_name'] . " " . $key['last_name'] . "</td>";
             $avg = 0;
@@ -76,7 +78,7 @@ require "header.php";
             }
             $avg = $sum / $count;
             echo "<td>$avg</td>";
-            echo "</tr>";
+            echo "<td><input onclick=\"showStudent('" . $key['pid'] . "');\" class=\"button-primary\" type=\"button\" value=\"View\"></td>";
         }
 
         //  TODO: Add code to make the rest of the table create popups. Then output the information to the popup and allow for score changing.
@@ -86,21 +88,20 @@ require "header.php";
 </div>
 
 <script>
-    var dialog = document.getElementById("userDialog");
-    var record = document.getElementById("1");
-    var closeBtn = document.getElementById("closeUserDialog");
-
-    record.onclick = function () {
-        console.log("Show User Dialog");
-        dialog.classList.remove("hidden");
-    }
-
-    closeBtn.onclick = function () {
-        console.log("Hide User Dialog");
-        dialog.classList.add("hidden");
+    function showStudent(pid) {
+        console.log(pid);
+        var method = "post";
+        var path = "showstudent.php"
+        var form = document.createElement("form");
+        form.setAttribute("method", method);
+        form.setAttribute("action", path);
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", "pid");
+        hiddenField.setAttribute("value", pid);
+        form.appendChild(hiddenField);
+        document.body.appendChild(form);
+        form.submit();
     }
 </script>
 
-<?php
-require "footer.php";
-?>
