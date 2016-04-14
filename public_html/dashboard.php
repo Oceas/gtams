@@ -1,6 +1,18 @@
+<div class="nav-bar menu-bar">
+    <p class="nav-application-name">GTAMS</p>
+
+    <div class="container-right">
+        <ul>
+            <li><a href="logout.php">LOGOUT</a></li>
+            <li><a href="dashboard.php">GC DASHBOARD</a></li>
+        </ul>
+    </div>
+</div>
+
 <?php
 $page_title = "Register";
 require "header.php";
+echo "The session vars are: " . $_SESSION["type"] . $_SESSION["id"] . $_SESSION["email"];
 ?>
 
 <div class="row">

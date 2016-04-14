@@ -1,6 +1,6 @@
 <?php
 //Starts the session.
-require_once "sessionstart.php";
+require_once "sessionstart.php"
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ require_once "sessionstart.php";
 <body>
 
 <!--Navbar -->
-<?php require "navbar.php" ?>
+<?php //require_once "navbar.php" ?>
 
 <!--Opening the Database -->
 <?php require_once "dbopen.php" ?>

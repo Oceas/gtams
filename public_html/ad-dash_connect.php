@@ -1,4 +1,16 @@
+<div class="nav-bar menu-bar">
+    <p class="nav-application-name">GTAMS</p>
+
+    <div class="container-right">
+        <ul>
+            <li><a href="logout.php">LOGOUT</a></li>
+            <li><a href="admin-dashboard.php">ADMIN DASHBOARD</a></li>
+        </ul>
+    </div>
+</div>
+
 <?php
+echo "The session vars are: " . $_SESSION["type"] . $_SESSION["id"] . $_SESSION["email"];
 //Checks for submission from the html code.
 if(!empty($_POST)){
   //require "header.php";
