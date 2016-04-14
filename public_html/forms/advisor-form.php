@@ -1,4 +1,4 @@
-<form action="../reference.php" method="post" enctype="multipart/form-data">
+<form action="dbreference.php" method="post" enctype="multipart/form-data">
  <div class="row">
      <div class="twelve columns text-center">
          <h3>Advisor Form</h3>
@@ -19,10 +19,8 @@
          <input class="u-full-width"  type="file" name="advisementLetterUpload">
      </div>
  </div>
+ <input name="pid" type="hidden" value="<?php echo $_GET["pid"];?>">
+ <input name="sessionId" type="hidden" value="<?php echo $_GET["sessionId"];?>">
  <input class="button-primary" type="submit" value="Submit">
 </form>
 
-
-<?php
-require "../reference.php"
-?>
